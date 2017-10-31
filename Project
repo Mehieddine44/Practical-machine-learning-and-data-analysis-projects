@@ -1,0 +1,69 @@
+library(caret)
+library(plyr)
+library(splines)
+library(parallel)
+library(gbm)
+
+# loading the training and test data files from their directory
+
+data <- read.csv("C:/Users/hp/Desktop/Coursera/pml-training.csv")
+test <- read.csv("C:/Users/hp/Desktop/Coursera/pml-testing.csv")
+
+#saving the classe column 
+
+classe = data$classe
+
+#Data cleaning :
+
+# Rmoving columns with at least one NA in them
+data <- data[, colSums(!is.na(data))==19622]
+
+# Removing empty columns
+data <- data[, colSums(data !="")== 19622]
+
+# Removing non numeric columns
+data <- data[, sapply(data, is.numeric)]
+
+# Attaching the classe column to my data again
+data$classe = classe
+
+# data exploring :
+
+# creating the correlation matrix :
+M <- abs(cor(data[,-56]))
+diag(M) <- 0 
+
+# finding the max correlated variables:
+w<-which(M == max(M),arr.ind = T)
+
+#plotting the max correlated predictors:
+qq <- qplot(accel_belt_z,roll_belt,colour=classe,data=data,
+            size=I(0.0001))
+
+
+
+# Data partition into test set and training set
+inTrain <- createDataPartition(data$classe, p=0.6, list=FALSE)
+training <- data[inTrain, ]
+testing <- data[-inTrain, ]
+
+#Model fitting :
+
+# Setting the trainControl parameters
+trc <- trainControl(method = "repeatedcv",number = 5,repeats = 1)
+# Fitting a gbm model
+mod <- train(classe ~ ., data=training, method = "gbm",
+             trControl = trc,verbose = FALSE)
+
+
+# Predicting on the testing set
+modPredTest <- predict.gbm(mod, newdata = testing)
+
+# Calculating the confusion matrix
+modAccuracyTest <- confusionMatrix(gbmPredTest, testing$classe)
+modAccuracyTest
+
+# predicting on the 20 test samples given :
+gbmPredTest2 <- predict(mod, newdata=test)
+
+
