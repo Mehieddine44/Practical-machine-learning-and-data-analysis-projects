@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<title>
+		</title>
+		<link rel="stylesheet" type="text/css" href="project explanation_files/style.css" />
+	</head>
+	<body>
+		<div class="stl_01">
+			<object data="project explanation_files/img_01.svg" type="image/svg+xml" class="stl_02">
+				<embed src="project explanation_files/img_01.svg" type="image/svg+xml" class="stl_02" />
+			</object>
+			<div class="stl_03"><span class="stl_04">Intro:</span></div>
+			<div class="stl_05"><span class="stl_06">the aim of this project is to fit a predictive model that predicts what&nbsp;&nbsp;type of </span></div>
+			<div class="stl_07"><span class="stl_06">movement is an athlete doing based on the values given by multiple sensors </span></div>
+			<div class="stl_08"><span class="stl_06">attached in the athlete's bodies while they were performing these movements. </span></div>
+			<div class="stl_09"><span class="stl_04">My appraoch: </span></div>
+			<div class="stl_10"><span class="stl_06">as shown in the source code file I started by loading the data which was in the </span></div>
+			<div class="stl_11"><span class="stl_06">form of ".csv" files. At the first glance to this raw data we can see that it has </span></div>
+			<div class="stl_12"><span class="stl_06">lots of empty columns or "NA" columns, along with some non numeric data like </span></div>
+			<div class="stl_13"><span class="stl_06">time series which is of no use for our prediction. Which means we should </span></div>
+			<div class="stl_14"><span class="stl_06">perform some preprocessing on it, for it to be of any use for us. </span></div>
+			<div class="stl_15"><span class="stl_04">Data cleaning:</span></div>
+			<div class="stl_16"><span class="stl_06">we start by saving the" classe" column so that it dose not get affected by the </span></div>
+			<div class="stl_17"><span class="stl_06">preprocessing. Then we remove the "X" variable - which is numeric yet it only </span></div>
+			<div class="stl_18"><span class="stl_06">carries the order of the samples and holds no relevant information for the&nbsp;&nbsp;the </span></div>
+			<div class="stl_19"><span class="stl_06">prediction. Then we remove the "NA" columns, empty columns, and non-</span></div>
+			<div class="stl_20"><span class="stl_06">numeric columns respectively, which leaves us with only 56 predictors out of </span></div>
+			<div class="stl_21"><span class="stl_06">160. After that we reattach the "classe" column to our data frame. </span></div>
+			<div class="stl_22"><span class="stl_04">Data exploring</span><span class="stl_06"> : </span></div>
+			<div class="stl_23"><span class="stl_06">In order to select the best model type we need to know how correlated are our </span></div>
+			<div class="stl_24"><span class="stl_06">predictors with our outcome. So we perfomed a calculation of "Spearman" rank </span></div>
+			<div class="stl_25"><span class="stl_06">based correlation because we are calculating the correlation with a categorical </span></div>
+			<div class="stl_26"><span class="stl_06">variable . Then we save the correlation of each predictor with the "classe" variable </span></div>
+			<div class="stl_27"><span class="stl_06">in a object called "M".&nbsp;&nbsp;</span></div>
+			<div class="stl_28"><span class="stl_06">After that we save the two predictors with the most correlation with the outcome </span></div>
+			<div class="stl_29"><span class="stl_06">in two lists called "maxCor1" and "maxCor2". Then we plot them against each </span></div>
+			<div class="stl_30"><span class="stl_06">other and color the "classe" variable using "qplot": </span></div>
+		</div>
+		<div class="stl_01">
+			<object data="project explanation_files/img_02.svg" type="image/svg+xml" class="stl_02">
+				<embed src="project explanation_files/img_02.svg" type="image/svg+xml" class="stl_02" />
+			</object>
+			<div class="stl_31"><span class="stl_06">&nbsp;&nbsp;</span></div>
+			<div class="stl_32"><span class="stl_06"> the plot shows no particular trend in which the outcome is distributed, So we can </span></div>
+			<div class="stl_33"><span class="stl_06">only conclude that we have a set of "weak" predictors, and therefore we need to </span></div>
+			<div class="stl_34"><span class="stl_06">fit a boosted model instead of a general linear regression model. And use repeated </span></div>
+			<div class="stl_35"><span class="stl_06">cross validation which would compromise for the "weakness" of our data set. And </span></div>
+			<div class="stl_36"><span class="stl_06">thereby increase accuracy on the expanse of scalability . </span></div>
+			<div class="stl_37"><span class="stl_04">Model fitting: </span></div>
+			<div class="stl_38"><span class="stl_06">so we start by partitioning our data into a training and testing sets, then we set the </span></div>
+			<div class="stl_39"><span class="stl_06">trainControl() to use repeated cross validation repeated 3 times and using 5 </span></div>
+			<div class="stl_40"><span class="stl_06">folds.Then to fit a general boosted model we use the train() function from the </span></div>
+			<div class="stl_41"><span class="stl_06">"caret" package. </span></div>
+		</div>
+		<div class="stl_01">
+			<object data="project explanation_files/img_03.svg" type="image/svg+xml" class="stl_02">
+				<embed src="project explanation_files/img_03.svg" type="image/svg+xml" class="stl_02" />
+			</object>
+			<div class="stl_03"><span class="stl_04">Confusion matrix: </span></div>
+			<div class="stl_05"><span class="stl_06">After the model is finally trained which took a few minutes we now calculate the </span></div>
+			<div class="stl_07"><span class="stl_06">confusion matrix using "confusionMatrix()" in order to predict the out of sample </span></div>
+			<div class="stl_42"><span class="stl_06">error :</span></div>
+			<div class="stl_43"><span class="stl_06">We can see that the overall accuracy of our model is 0.996 which means that the </span></div>
+			<div class="stl_44"><span class="stl_06">expected out of sample error is&nbsp;&nbsp;</span></div>
+			<div class="stl_45"><span class="stl_06">E = 1 - 0.996 = 0.004 = 0.4% which is a pretty satisfying value. </span></div>
+			<div class="stl_46"><span class="stl_06"> We can also see that the easiest classe of moves to predict was "A" as it had the </span></div>
+			<div class="stl_47"><span class="stl_06">highest accuracy metrics values as shown in the confusion matrix: </span></div>
+		</div>
+		<div class="stl_01">
+			<object data="project explanation_files/img_04.svg" type="image/svg+xml" class="stl_02">
+				<embed src="project explanation_files/img_04.svg" type="image/svg+xml" class="stl_02" />
+			</object>
+			<div class="stl_03"><span class="stl_04">Predicting for the 20 test samples: </span></div>
+			<div class="stl_05"><span class="stl_06">Finally we predict on the testing samples which gives the following : </span></div>
+		</div>
+	</body>
+</html>
