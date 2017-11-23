@@ -1,2 +1,2 @@
-# Practical-machine-learning-project
-The project report is in a pdf file
+# Human activity recognition project
+The project explaination is in a pdf file
