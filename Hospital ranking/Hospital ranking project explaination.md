@@ -9,5 +9,5 @@ the data for this project is found here : https://d396qusza40orc.cloudfront.net/
   the hospital with the desired ranking when it comes to that particular disease in that particular state.
   
  -The file "rankhospital.R":
-  This file takes the disease and the desired ranking and returns a data frame containing the hospitals with that 
-  particular ranking for that particular disease in each state.
+  This file contains the code for the function that takes the disease and the desired ranking and returns a data frame containing                
+  the hospitals with that particular ranking for that particular disease in each state.
