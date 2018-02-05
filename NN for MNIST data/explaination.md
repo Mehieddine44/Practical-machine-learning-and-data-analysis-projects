@@ -1,0 +1,5 @@
+-This project implements a neural network for classification of handwritten digits using the R language.
+-The data used for this project is the MNIST data set which is a set of over 60000 labled images of handwritten digits.
+-The code in "File loader.R" will download, gunzip, and help visualize the data.
+-The code in "Neural network.R" contains the code for the training and trsting of the network.
+-The rest of the files contain the code for the functions used in the "Neural network.R"
