@@ -20,4 +20,4 @@ of the cost function with respect to all weights and biases.The expression of th
 for the last layer's neurons , and  (BP2) for the neurons in the remaining of the layers. 
 the proof of these equations is easy and can be found in the great book in the link below. 
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/Mehieddine44/Practical-machine-learning-and-data-analysis-projects/blob/master/NN%20for%20MNIST%20data/back%20propagation%20equations.PNG)
