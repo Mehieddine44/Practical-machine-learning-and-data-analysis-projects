@@ -26,3 +26,10 @@ After that we save the two predictors with the most correlation with the outcome
 Then we plot them against each other and color the "classe" variable using "qplot": 
 
 ![alt text](https://github.com/Mehieddine44/Practical-machine-learning-project/blob/master/Human%20activity%20recognition/plot.PNG)
+
+ 
+ the plot shows no particular trend in which the outcome is distributed, So we can only conclude that we have a set of "weak" predictors, and therefore we need to fit a boosted model instead of a general linear regression model. And use repeated cross validation which would compromise for the "weakness" of our data set. And thereby increase accuracy on the expanse of scalability . 
+ 
+# Model fitting: 
+
+so we start by partitioning our data into a training and testing sets, then we set the trainControl() to use repeated cross validation repeated 3 times and using 5 folds.Then to fit a general boosted model we use the train() function from the "caret" package. 
