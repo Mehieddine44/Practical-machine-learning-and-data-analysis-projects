@@ -12,7 +12,7 @@ of no use for our prediction. Which means we should perform some preprocessing o
 # Data cleaning: 
 
 we start by saving the" classe" column so that it dose not get affected by the preprocessing. Then we remove the "X" variable
-- which is numeric yet it only carries the order of the samples and holds no relevant information for the  the prediction. Then
+which is numeric yet it only carries the order of the samples and holds no relevant information for the  the prediction. Then
 we remove the "NA" columns, empty columns, and nonnumeric columns respectively, which leaves us with only 56 predictors out of 160.
 After that we reattach the "classe" column to our data frame. 
 
