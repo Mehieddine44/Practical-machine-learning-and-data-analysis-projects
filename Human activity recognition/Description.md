@@ -3,8 +3,8 @@
 the aim of this project is to fit a predictive model that predicts what  type of movement is an athlete doing based on the values
 given by multiple sensors attached in the athlete's bodies while they were performing these movements. 
 
-The training data can be found here : https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv
-The test samples to evaluate the model can be found here :  https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
+The data used for this project can be found here : https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv
+
 
 # My appraoch: 
 
