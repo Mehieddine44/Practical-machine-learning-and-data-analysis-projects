@@ -21,3 +21,5 @@ for the last layer's neurons , and  (BP2) for the neurons in the remaining of th
 the proof of these equations is easy and can be found in the great book in the link below. 
 
 ![alt text](https://github.com/Mehieddine44/Practical-machine-learning-and-data-analysis-projects/blob/master/NN%20for%20MNIST%20data/back%20propagation%20equations.PNG)
+
+source:  http://neuralnetworksanddeeplearning.com/chap2.html 
