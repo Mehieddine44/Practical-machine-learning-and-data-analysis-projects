@@ -1,2 +1,2 @@
 # Practical-machine-learning-and-data-analysis-projects
-R code for my project submission
+This repository contains data analysis /machine learning projects which I found to be intresting
